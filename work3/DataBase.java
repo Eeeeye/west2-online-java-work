@@ -64,7 +64,9 @@ public class DataBase {
         DButil dButil = new DButil();
         connection = dButil.getConnection();
         //定义SQL
-        String sql = "select order_id ,product_id ,order_time ,order_price from orders;";
+        String sql = "select order_id ,product_id ,order_time ,order_price from orders\n" +
+                "union all \n" +
+                "select product_name,product_price from product";
         //获取pstmt对象
         pstmt = connection.prepareStatement(sql);
         //执行SQL
