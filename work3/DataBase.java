@@ -25,7 +25,9 @@ public class DataBase {
         //执行SQL
         rs = pstmt.executeQuery();
         //结果装载入集合
+        //此处需要使用product的JavaBean
         List<products> products1 = new ArrayList<>();
+        //当rs.next==true,证明还有数据未完成select
         while (rs.next()) {
             //获取数据
             int productId = rs.getInt("product_id");
@@ -34,6 +36,7 @@ public class DataBase {
             products product = new products(productId, productName, productPrice);
             products1.add(product);
         }
+        //打印集合
         System.out.println(products1);
 
         // 关闭连接、释放资源
@@ -72,7 +75,9 @@ public class DataBase {
         //执行SQL
         rs = pstmt.executeQuery();
         //结果装载入集合
+        //使用orderdJavaBean类
         List<Orders> orders1 = new ArrayList<>();
+        //当rs.next==true,证明还有数据未完成select
         while (rs.next()) {
             //获取数据
             int orderId = rs.getInt("order_id");
@@ -82,6 +87,7 @@ public class DataBase {
             Orders orders = new Orders(orderId, productId, orderTime, orderPrice);
             orders1.add(orders);
         }
+        //打印集合
         System.out.println(orders1);
         // 关闭连接、释放资源
         try {
